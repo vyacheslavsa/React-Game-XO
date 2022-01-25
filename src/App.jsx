@@ -8,7 +8,7 @@ import ContentSettings from "./components/ContentSettings/contentSettings";
 
 const App = () => {
   const variables = ["x", "o"];
-  const arrValues = ["", "", "", "", "", "", "", "", ""];
+  const arrValues = new Array(9).fill('');
 
   const [values, setValues] = useState(arrValues); //массив значений
   const [current, setCurrent] = useState(variables[0]); // x или о
@@ -18,6 +18,7 @@ const App = () => {
   const [winer, setWiner] = useState(false);
   const [modalWinState, setModalWinState] = useState(false);
   const [titleModal, setTitleModal] = useState(null);
+  const [modalSettings, setModalSettings] = useState(false);
 
   const onClickDiv = (index) => {
     if (!values[index]) {
@@ -33,7 +34,7 @@ const App = () => {
     }
   };
 
-  const newGame = () => {
+  const newGame = () => {// Функция новая игра
     setValues(arrValues);
     setCurrent(variables[0]);
     setCounter(0);
@@ -42,7 +43,7 @@ const App = () => {
     setWiner(false);
   };
 
-  const victoryConditions = () => {
+  const victoryConditions = () => {//варианты победы
     if (values[0] === values[1] && values[1] === values[2] && values[0]) {
       winerGame(values[0]);
     }
@@ -69,11 +70,11 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => {//если открываем один из квадратов запускается функция проверки на победу
     victoryConditions();
   }, [values]);
 
-  const winerGame = (win) => {
+  const winerGame = (win) => {//функция выгрыша
     setWiner(true);
     setTitleModal(`Выграл: ${win}`);
     setModalWinState(true);
@@ -84,20 +85,20 @@ const App = () => {
     }
   };
 
-  useEffect(() => {
+  useEffect(() => {//следим за тем чтобы количество ходов не превышало восьми , если привысило то запускаем функцию 
     if (counter > 8) {
       draw();
     }
   }, [counter]);
 
-  const draw = () => {
+  const draw = () => {//функция проверки на победу или ничью
     if (!winer || counter > 8) {
       setTitleModal("Ничья");
       setModalWinState(true);
     }
   };
 
-  const cleanValues = () => {
+  const cleanValues = () => {//функция очистки полей и ходов
     setValues(arrValues);
     setCurrent(variables[0]);
     setCounter(0);
