@@ -1,0 +1,179 @@
+body {
+  font-family: "Roboto Slab", serif;
+  font-weight: 700;
+}
+
+.app {
+  .head {
+    display: flex;
+    background-color: #fff1dc;
+    justify-content: space-around;
+    p {
+      margin-left: 10px;
+    }
+
+    .btnNewGame {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .settings {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .count {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid;
+    border: 5px solid;
+    p{
+      background-color: burlywood;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+  }
+  .gameBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+  }
+  .containerBox {
+    font-family: "Mochiy Pop P One", sans-serif;
+    display: grid;
+    grid-template-rows: 150px 150px 150px;
+    grid-template-columns: 150px 150px 150px;
+    grid-gap: 2vw;
+    justify-content: center;
+    padding: 50px;
+    box-sizing: border-box;
+    .box {
+      box-sizing: border-box;
+      font-size: 5vw;
+      min-width: 150px;
+      min-height: 150px;
+      border: 5px solid black;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 20px;
+      background-color: wheat;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .containerBox {
+      grid-template-rows: 100px 100px 100px;
+      grid-template-columns: 100px 100px 100px;
+      .box {
+        font-size: 10vw;
+        min-width: 100px;
+        min-height: 100px;
+        border: 5px solid black;
+        border-radius: 15px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  .currentMove {
+    display: flex;
+    align-items: center;
+  }
+
+  
+}
+
+
+//блюр
+.blurDisplay{
+  filter: blur(3px);
+  
+  .head {
+    display: flex;
+    background-color: #fff1dc;
+    justify-content: space-around;
+    p {
+      margin-left: 10px;
+    }
+
+    .btnNewGame {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+    .settings {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+  }
+  .count {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 1px solid;
+    border: 5px solid;
+    p{
+      background-color: burlywood;
+      border-radius: 5px;
+      padding: 5px;
+    }
+
+  }
+  .gameBar {
+    display: flex;
+    justify-content: space-between;
+    padding: 50px;
+  }
+  .containerBox {
+    font-family: "Mochiy Pop P One", sans-serif;
+    display: grid;
+    grid-template-rows: 150px 150px 150px;
+    grid-template-columns: 150px 150px 150px;
+    grid-gap: 2vw;
+    justify-content: center;
+    padding: 50px;
+    box-sizing: border-box;
+    .box {
+      box-sizing: border-box;
+      font-size: 5vw;
+      min-width: 150px;
+      min-height: 150px;
+      border: 5px solid black;
+      border-radius: 30px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-bottom: 20px;
+      background-color: wheat;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .containerBox {
+      grid-template-rows: 100px 100px 100px;
+      grid-template-columns: 100px 100px 100px;
+      .box {
+        font-size: 10vw;
+        min-width: 100px;
+        min-height: 100px;
+        border: 5px solid black;
+        border-radius: 15px;
+        padding-bottom: 10px;
+      }
+    }
+  }
+
+  .currentMove {
+    display: flex;
+    align-items: center;
+  }
+
+  
+}
+
