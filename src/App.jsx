@@ -4,6 +4,7 @@ import "./App.scss";
 import { ReactComponent as NewGameSVG } from "../src/image/NewGame.svg";
 import { ReactComponent as SettingsSVG } from "../src/image/Settings.svg";
 import ModalWin from "./components/ModalWin/ModalWin";
+import ContentSettings from "./components/ContentSettings/contentSettings";
 
 const App = () => {
   const variables = ["x", "o"];
@@ -90,7 +91,7 @@ const App = () => {
   }, [counter]);
 
   const draw = () => {
-    if (!winer || counter>8) {
+    if (!winer || counter > 8) {
       setTitleModal("Ничья");
       setModalWinState(true);
     }
@@ -102,9 +103,10 @@ const App = () => {
     setCounter(0);
   };
 
-  const openSettings = () =>{
-    
-  }
+  const openSettings = () => {
+    setTitleModal(<ContentSettings />);
+    setModalWinState(true);
+  };
 
   return (
     <>
@@ -114,14 +116,14 @@ const App = () => {
             <NewGameSVG />
             <p>Начать заново</p>
           </div>
-          <div className="settings">
+          <div className="settings" onClick={() => openSettings()}>
             <SettingsSVG />
-            <p onClick={()=>openSettings()}>Настройки</p>
+            <p>Настройки</p>
           </div>
         </div>
         <div className="count">
-            <p className="countX">X: {countX}</p>
-            <p className="countO">O: {countO}</p>
+          <p className="countX">X: {countX}</p>
+          <p className="countO">O: {countO}</p>
         </div>
         <div className="gameBar">
           <div className="currentMove">Xодит: {current} </div>
