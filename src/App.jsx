@@ -8,7 +8,7 @@ import ContentSettings from "./components/ContentSettings/contentSettings";
 
 const App = () => {
   const variables = ["x", "o"];
-  const arrValues = new Array(9).fill('');
+  const arrValues = new Array(9).fill("");
 
   const [values, setValues] = useState(arrValues); //массив значений
   const [current, setCurrent] = useState(variables[0]); // x или о
@@ -19,6 +19,8 @@ const App = () => {
   const [modalWinState, setModalWinState] = useState(false);
   const [titleModal, setTitleModal] = useState(null);
   const [modalSettings, setModalSettings] = useState(false);
+  const [blurBack, setBlurBack] = useState(false);
+  
 
   const onClickDiv = (index) => {
     if (!values[index]) {
@@ -34,7 +36,8 @@ const App = () => {
     }
   };
 
-  const newGame = () => {// Функция новая игра
+  const newGame = () => {
+    // Функция новая игра
     setValues(arrValues);
     setCurrent(variables[0]);
     setCounter(0);
@@ -43,7 +46,8 @@ const App = () => {
     setWiner(false);
   };
 
-  const victoryConditions = () => {//варианты победы
+  const victoryConditions = () => {
+    //варианты победы
     if (values[0] === values[1] && values[1] === values[2] && values[0]) {
       winerGame(values[0]);
     }
@@ -70,14 +74,17 @@ const App = () => {
     }
   };
 
-  useEffect(() => {//если открываем один из квадратов запускается функция проверки на победу
+  useEffect(() => {
+    //если открываем один из квадратов запускается функция проверки на победу
     victoryConditions();
   }, [values]);
 
-  const winerGame = (win) => {//функция выгрыша
+  const winerGame = (win) => {
+    //функция выгрыша
     setWiner(true);
     setTitleModal(`Выграл: ${win}`);
     setModalWinState(true);
+    setBlurBack(true)
     if (win === "x") {
       setCountX(countX + 1);
     } else {
@@ -85,33 +92,37 @@ const App = () => {
     }
   };
 
-  useEffect(() => {//следим за тем чтобы количество ходов не превышало восьми , если привысило то запускаем функцию 
+  useEffect(() => {
+    //следим за тем чтобы количество ходов не превышало восьми , если привысило то запускаем функцию
     if (counter > 8) {
       draw();
     }
   }, [counter]);
 
-  const draw = () => {//функция проверки на победу или ничью
+  const draw = () => {
+    //функция проверки на победу или ничью
     if (!winer || counter > 8) {
       setTitleModal("Ничья");
       setModalWinState(true);
+      setBlurBack(true)
     }
   };
 
-  const cleanValues = () => {//функция очистки полей и ходов
+  const cleanValues = () => {
+    //функция очистки полей и ходов
     setValues(arrValues);
     setCurrent(variables[0]);
     setCounter(0);
   };
 
   const openSettings = () => {
-    setTitleModal(<ContentSettings />);
-    setModalWinState(true);
+    setModalSettings(true);
+    setBlurBack(true)
   };
 
   return (
     <>
-      <div className={!modalWinState ? "app" : "blurDisplay"}>
+      <div className={blurBack ? "blurDisplay" : "app"}>
         <div className="head">
           <div className="btnNewGame" onClick={() => newGame()}>
             <NewGameSVG />
@@ -143,8 +154,10 @@ const App = () => {
           setModalWinState={setModalWinState}
           title={titleModal}
           cleanValues={cleanValues}
+          setBlurBack={setBlurBack}
         />
       )}
+      {modalSettings && <ContentSettings setModalSettings={setModalSettings} />}
     </>
   );
 };

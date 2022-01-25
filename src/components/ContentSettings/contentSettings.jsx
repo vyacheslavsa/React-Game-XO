@@ -1,19 +1,10 @@
 import React from "react";
-import "./contentSettings"
+import "../ContentSettings/contentSettings"
 
-export const ContentSettings = () => {
+export const ContentSettings = ({setModalSettings}) => {
   return (
-    <div style="settingsmenu">
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
-      <div>123</div>
+    <div className="settings">
+      <div>Изменить цвет фона</div>
     </div>
   );
 };

@@ -1,11 +1,12 @@
 import React from 'react'
 import "../ModalWin/ModalWin.scss";
 
-const ModalWin = ({setModalWinState,title,cleanValues}) => {
+const ModalWin = ({setModalWinState,title,cleanValues,setBlurBack}) => {
 
   const closedModal =() =>{
     setModalWinState(false)
     cleanValues()
+    setBlurBack(false)
   }
 
   return(
