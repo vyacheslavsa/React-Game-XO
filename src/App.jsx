@@ -141,8 +141,6 @@ const App = () => {
           title={titleModal}
           cleanValues={cleanValues}
         />
-
-        
       )}
     </>
   );
